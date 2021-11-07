@@ -6,10 +6,10 @@ namespace ChainOfResponsibilitiesCalculator.Operations
     {
         public override object Handle(object request)
         {
-            string _request = request as string;
-            if (_request[1].Equals('/'))
+            OperationModel _request = request as OperationModel;
+            if (_request.Op.Equals('*'))
             {
-                return int.Parse(_request[0].ToString()) / int.Parse(_request[2].ToString());
+              return _request.FirstNumber / _request.SecondNumber;
             }
             else
             {
