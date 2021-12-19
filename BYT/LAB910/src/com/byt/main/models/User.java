@@ -2,6 +2,7 @@ package com.byt.main.models;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class User extends Person {
 
@@ -40,6 +41,9 @@ public class User extends Person {
 
     public User(String name, String surname, String address, Integer age, Gender gender, String email, Double locationRange, Gender genderPreference, Location location, List<Hobby> hobbies, List<Picture> pictures) {
         super(name, surname, address, age, gender);
+
+        if (!isValidEmailAddress(email)) throw new IllegalArgumentException("provide correct email");
+
         this.email = email;
         this.locationRange = locationRange;
         this.genderPreference = genderPreference;
@@ -61,6 +65,7 @@ public class User extends Person {
     }
 
     public void setEmail(String email) {
+        if (!isValidEmailAddress(email)) throw new IllegalArgumentException("provide correct email");
         this.email = email;
     }
 
@@ -111,4 +116,11 @@ public class User extends Person {
                         List.of(new Picture("another_picture".getBytes(), 15L))));
     }
 
+    // TODO: move to different Class
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+    }
 }
