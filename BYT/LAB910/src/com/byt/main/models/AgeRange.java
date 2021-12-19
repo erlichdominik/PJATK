@@ -1,10 +1,14 @@
-package com.byt.models;
+package com.byt.main.models;
 
 public class AgeRange {
     private Integer min;
     private Integer max;
 
     public AgeRange(Integer min, Integer max) {
+        //TODO: make constrains
+        if(min > max) {
+            throw new IllegalArgumentException("min cannot be bigger than max");
+        }
         this.min = min;
         this.max = max;
     }
@@ -22,6 +26,9 @@ public class AgeRange {
     }
 
     public void setMin(Integer min) {
+        if(min > this.max) {
+            throw new IllegalArgumentException("min cannot be bigger than max");
+        }
         this.min = min;
     }
 
@@ -30,6 +37,9 @@ public class AgeRange {
     }
 
     public void setMax(Integer max) {
+        if (max < this.min) {
+            throw new IllegalArgumentException("min cannot be bigger than max");
+        }
         this.max = max;
     }
 }

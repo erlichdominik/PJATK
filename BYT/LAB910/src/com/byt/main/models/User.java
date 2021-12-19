@@ -1,4 +1,4 @@
-package com.byt.models;
+package com.byt.main.models;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +9,24 @@ public class User extends Person {
     private Double locationRange;
     private Gender genderPreference;
     private Location location;
+    private List<Hobby> hobbies;
+    private List<Picture> pictures;
+
+    public List<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<Picture> pictures) {
+        this.pictures = pictures;
+    }
+
+    public List<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
+    }
 
     @Override
     public String toString() {
@@ -20,12 +38,14 @@ public class User extends Person {
                 '}';
     }
 
-    public User(String name, String surname, String address, Integer age, Gender gender, String email, Double locationRange, Gender genderPreference, Location location) {
+    public User(String name, String surname, String address, Integer age, Gender gender, String email, Double locationRange, Gender genderPreference, Location location, List<Hobby> hobbies, List<Picture> pictures) {
         super(name, surname, address, age, gender);
         this.email = email;
         this.locationRange = locationRange;
         this.genderPreference = genderPreference;
         this.location = location;
+        this.hobbies = hobbies;
+        this.pictures = pictures;
     }
 
     public Location getLocation() {
@@ -65,7 +85,7 @@ public class User extends Person {
     }
 
     public static List<User> getUsersInSameLocation(User user) {
-        return Arrays.asList(
+        return List.of(
                 new User("John",
                         "Doe",
                         "Street name, England",
@@ -74,7 +94,9 @@ public class User extends Person {
                         "johndoe@gmail.com",
                         20.0,
                         Gender.FEMALE,
-                        new Location("England", "London")),
+                        new Location("England", "London"),
+                        Arrays.asList(new Hobby("swimming"), new Hobby("walking")),
+                        List.of(new Picture("sample_image".getBytes(), 12L))),
 
                 new User("Anna",
                         "Smith",
@@ -84,9 +106,9 @@ public class User extends Person {
                         "johndoe@gmail.com",
                         24.0,
                         Gender.MALE,
-                        new Location("England", "London"))
-
-        );
+                        new Location("England", "London"),
+                        Arrays.asList(new Hobby("travelling"), new Hobby("photography")),
+                        List.of(new Picture("another_picture".getBytes(), 15L))));
     }
 
 }

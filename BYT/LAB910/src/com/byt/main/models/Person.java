@@ -1,4 +1,4 @@
-package com.byt.models;
+package com.byt.main.models;
 
 public abstract class Person {
     private String name;

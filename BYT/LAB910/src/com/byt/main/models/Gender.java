@@ -1,4 +1,4 @@
-package com.byt.models;
+package com.byt.main.models;
 
 public enum Gender {
     MALE,

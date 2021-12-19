@@ -1,8 +1,23 @@
-package com.byt.models;
+package com.byt.main.models;
+
+import java.util.Objects;
 
 public class Location {
     private String country;
     private String city;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Location)) return false;
+        Location location = (Location) o;
+        return getCountry().equals(location.getCountry()) && getCity().equals(location.getCity());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCountry(), getCity());
+    }
 
     @Override
     public String toString() {
