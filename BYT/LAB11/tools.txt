@@ -1,0 +1,26 @@
+Tools for app:
+  Backend:
+    Language:
+      Java
+    Libraries:
+      Spring
+      Spring Boot (including Spring boot security, Spring JPA etc.)
+  Database:
+    Language:
+      PostreSQL
+  Deployement:
+    Platform:
+      Heroku
+  Frontend:
+    Language:
+      JavaScript
+    Libraries:
+      Angular
+    Language:
+      Kotlin
+Rationale:
+In this app we will use java as main backend language with spring boot as library, java is very mature language with huge amount of features which will come handy while building good architecture for backend.
+As database we will use postgreSQL as it's really popular choice which maybe beneficial while deplyoing database on e.g. heroku which has good support for postgreSQL
+For deployement we will use Heroku as it's providing basic cloud service for free and it's supporting postgreSQL and java with it's spring boot.
+For frontend we will use JS with Angular as it has similar syntax as Java, also it's one of the best choices when we want to test this app.
+For mobile app we will use kotlin as it has great compatibility with JVM ecosystem that we are using.
