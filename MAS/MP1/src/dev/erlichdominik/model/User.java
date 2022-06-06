@@ -17,6 +17,11 @@ public class User extends Person {
         this.mail = mail;
     }
 
+    public void addUserContract(LibraryUserContract libraryUserContract) {
+        this.libraryUserContracts.add(libraryUserContract);
+//        libraryUserContract.setUser(this);
+    }
+
     public String getMail() {
         return mail;
     }
@@ -31,6 +36,10 @@ public class User extends Person {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return mail.equals(user.mail);
+    }
+
+    public void cancelContract() {
+        this.libraryUserContracts = null;
     }
 
     @Override

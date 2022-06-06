@@ -18,6 +18,10 @@ public class LibraryUserContract {
         this.contractLength = contractLength;
         this.library = library;
         this.user = user;
+
+        //add connections
+        library.addUserContract(this);
+        user.addUserContract(this);
     }
 
     public void setId(Long id) {
@@ -35,15 +39,23 @@ public class LibraryUserContract {
         this.contractLength = contractLength;
     }
 
-    public void setLibrary(Library library) {
-        if (library == null) throw new IllegalArgumentException("library cannot be null");
-        this.library = library;
+    public void cancelContract() {
+        this.user.cancelContract();
+        this.library.cancelContract();
+
+        this.library = null;
+        this.user = null;
     }
 
-    public void setUser(User user) {
-        if (user == null) throw new IllegalArgumentException("user cannot be null");
-        this.user = user;
-    }
+//    public void setLibrary(Library library) {
+//        if (library == null) throw new IllegalArgumentException("library cannot be null");
+//        this.library = library;
+//    }
+//
+//    public void setUser(User user) {
+//        if (user == null) throw new IllegalArgumentException("user cannot be null");
+//        this.user = user;
+//    }
 
     public Long getId() {
         return id;

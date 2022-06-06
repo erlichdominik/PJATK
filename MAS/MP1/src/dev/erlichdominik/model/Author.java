@@ -21,6 +21,12 @@ public class Author extends Person {
         setId(id);
     }
 
+    public void addPublishingHouse(PublishingHouse publishingHouse) {
+        if (publishingHouse == null) throw new IllegalArgumentException("publishing house cannot be null");
+        this.publishingHouses.add(publishingHouse);
+        publishingHouse.addAuthour(this);
+    }
+
     public List<PublishingHouse> getPublishingHouses() {
         if (publishingHouses == null) throw new IllegalArgumentException("publishing houses are null");
         return publishingHouses;

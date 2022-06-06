@@ -17,9 +17,18 @@ public class Library {
     private Long id;
     private String name;
     // association with an attribute
-    private List<LibraryUserContract> libraryUserContracts;
+    private List<LibraryUserContract> libraryUserContracts = new ArrayList<>();
     // qualified association
     private Map<String, Book> books = new HashMap<>();
+
+    public void addUserContract(LibraryUserContract libraryUserContract) {
+        this.libraryUserContracts.add(libraryUserContract);
+//        libraryUserContract.setLibrary(this);
+    }
+
+    public void cancelContract() {
+        this.libraryUserContracts = null;
+    }
 
     public void addBook(Book book) {
         if (book == null) throw new IllegalArgumentException("book cannot be null");
@@ -35,6 +44,8 @@ public class Library {
         return books.get(title);
     }
 
-
-
+    public Library(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

@@ -1,0 +1,4 @@
+many to many basic relation -> Author - PublishingHouses
+Library - User -> Association with an attribute
+Qualified -> Library - books
+Composition -> Book - Page

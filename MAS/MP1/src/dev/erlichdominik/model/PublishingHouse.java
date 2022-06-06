@@ -46,5 +46,6 @@ public class PublishingHouse {
     public void addAuthour(Author author) {
         if (author == null) throw new IllegalArgumentException("author cannot be null");
         this.authors.add(author);
+        author.addPublishingHouse(this);
     }
 }

@@ -17,7 +17,7 @@ public class Page {
     }
 
     public static Page createPage(Book book, Long id, String text) {
-        if (book == null && id == null && text == null) throw new IllegalArgumentException("one of the attributes is wrong");
+        if (book == null || id == null || text == null) throw new IllegalArgumentException("one of the attributes is wrong");
         Page page = new Page(id, text, book);
         book.addPage(page);
         return page;
